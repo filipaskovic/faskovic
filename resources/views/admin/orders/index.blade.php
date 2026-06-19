@@ -6,7 +6,7 @@
 
 <div class="card shadow-sm">
     <div class="card-body">
-        <table class="table table-hover align-middle mb-0">
+        <table id="ordersTable" class="table table-hover align-middle mb-0">
             <thead>
                 <tr>
                     <th>#</th>
@@ -15,7 +15,7 @@
                     <th>Ukupno</th>
                     <th>Status</th>
                     <th>Datum</th>
-                    <th class="text-end">Akcije</th>
+                    <th class="text-end" data-orderable="false">Akcije</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,3 +53,18 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+<script>
+    new DataTable('#ordersTable', {
+        language: {
+            search: 'Pretraga:',
+            lengthMenu: 'Prikaži _MENU_ zapisa',
+            info: 'Prikazano _START_–_END_ od _TOTAL_',
+            paginate: { previous: 'Prethodna', next: 'Sledeća' },
+            zeroRecords: 'Nema rezultata',
+            infoEmpty: 'Nema zapisa',
+        },
+        order: [[1, 'asc']],  
+    });
+</script>
+@endpush

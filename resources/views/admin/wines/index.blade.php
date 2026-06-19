@@ -54,17 +54,17 @@
 </div>
 <div class="card shadow-sm">
     <div class="card-body">
-        <table class="table table-hover align-middle mb-0">
+        <table id="winesTable" class="table table-hover align-middle mb-0">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Slika</th>
+                    <th data-orderable="false">Slika</th>
                     <th>Naziv</th>
                     <th>Kategorija</th>
                     <th>Vinarija</th>
                     <th>Cena</th>
                     <th>Kolicine</th>
-                    <th class="text-end">Akcije</th>
+                    <th class="text-end" data-orderable="false">Akcije</th>
                 </tr>
             </thead>
             <tbody>
@@ -119,3 +119,18 @@
 
 
 @endsection
+@push('scripts')
+<script>
+    new DataTable('#winesTable', {
+        language: {
+            search: 'Pretraga:',
+            lengthMenu: 'Prikaži _MENU_ zapisa',
+            info: 'Prikazano _START_-_END_ od _TOTAL_',
+            paginate: { previous: 'Prethodna', next: 'Sledeća' },
+            zeroRecords: 'Nema rezultata',
+            infoEmpty: 'Nema zapisa',
+        },
+        order: [[1, 'asc']],  
+    });
+</script>
+@endpush
