@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Wine;
 use App\Models\Category;
 
@@ -43,4 +43,22 @@ class PublicController extends Controller
     {
         return view('public.contact');
     }
+
+    public function sendContact(Request $request)
+{
+
+    $request->validate([
+        'name'    => 'required|string|max:255',
+        'email'   => 'required|email|max:255',
+        'subject' => 'required|string|max:255',
+        'message' => 'required|string|max:2000',
+    ], [
+        'name.required'    => 'Ime je obavezno.',
+        'email.required'   => 'Email je obavezan.',
+        'email.email'      => 'Unesite ispravan email.',
+        'subject.required' => 'Naslov je obavezan.',
+        'message.required' => 'Poruka je obavezna.',
+    ]);
+    return back()->with('success', 'Hvala! Vaša poruka je poslata.');
+}
 }

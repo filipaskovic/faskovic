@@ -14,7 +14,7 @@ Route::get('/', [PublicController::class, 'home'])->name('home');
 Route::get('/vinska-karta', [PublicController::class, 'catalog'])->name('catalog');
 Route::get('/vino/{wine}', [PublicController::class, 'wine'])->name('wine.show');
 Route::get('/kontakt', [PublicController::class, 'contact'])->name('contact');
-
+Route::post('/kontakt', [PublicController::class, 'sendContact'])->name('contact.send');
 // ---------- BREEZE: dashboard + profil ----------
 Route::get('/dashboard', function () {
     return view('dashboard');
