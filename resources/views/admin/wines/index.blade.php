@@ -130,7 +130,7 @@
             zeroRecords: 'Nema rezultata',
             infoEmpty: 'Nema zapisa',
         },
-        order: [[1, 'asc']],  
+        order: [[0, 'asc']],  
     });
 </script>
 @endpush

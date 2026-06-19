@@ -1,3 +1,11 @@
+@php
+    $statusLabels = [
+        'pending'   => 'Na čekanju',
+        'confirmed' => 'Potvrđeno',
+        'delivered' => 'Isporučeno',
+        'cancelled' => 'Otkazano',
+    ];
+@endphp
 @extends('layouts.admin')
 @section('title', 'Porudžbina #' . $order->id)
 
@@ -10,7 +18,7 @@
 </div>
 
 <div class="row">
-    {{-- Leva strana: stavke --}}
+
     <div class="col-lg-8 mb-3">
         <div class="card shadow-sm">
             <div class="card-header bg-white"><strong>Stavke</strong></div>
@@ -45,7 +53,7 @@
         </div>
     </div>
 
-    {{-- Desna strana: podaci + status --}}
+   
     <div class="col-lg-4 mb-3">
         <div class="card shadow-sm mb-3">
             <div class="card-header bg-white"><strong>Kupac</strong></div>
@@ -64,9 +72,9 @@
                     @csrf
                     @method('PATCH')
                     <select name="status" class="form-select mb-2">
-                        @foreach(['pending', 'confirmed', 'delivered', 'cancelled'] as $status)
-                            <option value="{{ $status }}" {{ $order->status === $status ? 'selected' : '' }}>
-                                {{ ucfirst($status) }}
+                        @foreach($statusLabels as $value => $label)
+                            <option value="{{ $value }}" {{ $order->status === $value ? 'selected' : '' }}>
+                                {{ $label }}
                             </option>
                         @endforeach
                     </select>

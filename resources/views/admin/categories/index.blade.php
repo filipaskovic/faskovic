@@ -58,12 +58,12 @@
         language: {
             search: 'Pretraga:',
             lengthMenu: 'Prikaži _MENU_ zapisa',
-            info: 'Prikazano _START_–_END_ od _TOTAL_',
+            info: 'Prikazano _START_-_END_ od _TOTAL_',
             paginate: { previous: 'Prethodna', next: 'Sledeća' },
             zeroRecords: 'Nema rezultata',
             infoEmpty: 'Nema zapisa',
         },
-        order: [[1, 'asc']],  
+        order: [[0, 'asc']],  
     });
 </script>
 @endpush

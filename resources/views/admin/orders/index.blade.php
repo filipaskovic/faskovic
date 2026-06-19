@@ -1,3 +1,11 @@
+@php
+    $statusLabels = [
+        'pending'   => 'Na čekanju',
+        'confirmed' => 'Potvrđeno',
+        'delivered' => 'Isporučeno',
+        'cancelled' => 'Otkazano',
+    ];
+@endphp
 @extends('layouts.admin')
 @section('title', 'Porudžbine')
 
@@ -33,7 +41,7 @@
                                 'bg-success'           => $order->status === 'delivered',
                                 'bg-danger'            => $order->status === 'cancelled',
                             ])>
-                                {{ ucfirst($order->status) }}
+                                {{ $statusLabels[$order->status] ?? $order->status }}
                             </span>
                            
                         </td>
@@ -64,7 +72,7 @@
             zeroRecords: 'Nema rezultata',
             infoEmpty: 'Nema zapisa',
         },
-        order: [[1, 'asc']],  
+        order: [[0, 'asc']],  
     });
 </script>
 @endpush

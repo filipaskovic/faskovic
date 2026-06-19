@@ -24,15 +24,22 @@
     <div class="offcanvas-md offcanvas-start sidebar text-white p-3" tabindex="-1" id="sidebar">
         <div class="offcanvas-header px-0">
             <a href="{{ route('admin.dashboard') }}" class="brand navbar-brand d-flex align-items-center gap-2">
-                <img src="{{ asset('images/logo.svg') }}" alt="Logo" height="32"
+                <img src="{{ asset('images/logo.svg') }}" alt="Logo" height="64"
                      onerror="this.style.display='none'">
-                <span class="fw-bold">E-Vinoteka</span>
+                <span class="fw-bold">E-Vinoteka Dionis</span>
             </a>
             <button type="button" class="btn-close btn-close-white d-md-none"
                     data-bs-dismiss="offcanvas" data-bs-target="#sidebar"></button>
         </div>
 
         <ul class="nav nav-pills flex-column gap-1 mt-3">
+            <li class="nav-item d-none d-md-block text-center mb-3">
+                <a href="{{ route('admin.dashboard') }}" class="mb-3 justify-content-center brand navbar-brand d-flex align-items-center gap-2">
+                <img src="{{ asset('images/logo.svg') }}" alt="Logo" height="64"
+                     onerror="this.style.display='none'">
+                    </a>
+                    <span class="fw-medium">E-Vinoteka Dionis</span>
+            </li>
             <li class="nav-item">
                 <a href="{{ route('admin.dashboard') }}"
                    class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
