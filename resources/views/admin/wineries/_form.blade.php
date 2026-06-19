@@ -51,6 +51,15 @@
             <small class="text-muted d-block mb-1">Trenutna slika:</small>
             <img src="{{ $src }}" alt="" style="height:80px;border-radius:.4rem;">
         </div>
+        <div class="form-check mt-2">
+            <input type="checkbox" name="remove_image" value="1"
+                   id="remove_image" class="form-check-input">
+            <label for="remove_image" class="form-check-label text-danger">
+                Ukloni sliku
+            </label>
+
+        </div>
+        
     @endif
 </div>
 <div class="mb-3">
@@ -69,6 +78,10 @@
         <div class="mt-2">
             <small class="text-muted d-block mb-1">Trenutni logo:</small>
             <img src="{{ $logoSrc }}" alt="" style="height:60px;border-radius:.4rem;">
+        </div>
+        <div class="form-check mt-2">
+            <input type="checkbox" name="remove_logo" value="1" id="remove_logo" class="form-check-input">
+            <label for="remove_logo" class="form-check-label text-danger">Ukloni logo</label>
         </div>
     @endif
 </div>
