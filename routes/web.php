@@ -18,6 +18,7 @@ Route::prefix('admin')
         Route::resource('wineries',WineryController::class);
 
         Route::get('orders',[OrderController::class, 'index'])->name('orders.index');
+        Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
         Route::patch('orders/{order}',[OrderController::class,'update'])->name('orders.update');
     });
 
