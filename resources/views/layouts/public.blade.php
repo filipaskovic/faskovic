@@ -65,14 +65,19 @@
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
+                   
                     @auth
+                    <a class="btn btn-sm btn-outline-success ms-2" href="{{ route('orders.my') }}">
+                            <i class="fa fa-box"></i> Moje porudžbine
+                        </a>
+                        
+                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                            @csrf
+                            <button class="btn  btn-outline-success mx-2">Odjava</button>
+                        </form>
                         <a class="nav-icon position-relative text-decoration-none" href="{{ route('profile.edit') }}">
                             <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         </a>
-                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                            @csrf
-                            <button class="btn btn-sm btn-outline-success ms-2">Odjava</button>
-                        </form>
                     @else
                         <a class="btn btn-sm btn-outline-success ms-2" href="{{ route('login') }}">Prijava</a>
                         <a class="btn btn-sm btn-success ms-2" href="{{ route('register') }}">Registracija</a>

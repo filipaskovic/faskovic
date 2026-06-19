@@ -60,16 +60,30 @@
                             {!! $wine->description ?: '<p>Opis nije dostupan.</p>' !!}
                         </div>
 
-                        {{-- Naručivanje --}}
+                       
                         <div class="row pt-3">
-                            <div class="col d-grid">
+                            <div class="col">
                                 @auth
                                     @if($wine->stock > 0)
-                                        <a href="#" class="btn btn-success btn-lg disabled">
-                                            <i class="fas fa-cart-plus"></i> Naruči (uskoro)
-                                        </a>
+                                        <form action="{{ route('orders.store', $wine) }}" method="POST">
+                                            @csrf
+                                            <div class="row g-2 align-items-end">
+                                                <div class="col-4">
+                                                    <label for="quantity" class="form-label">Količina</label>
+                                                    <input type="number" name="quantity" id="quantity"
+                                                        class="form-control @error('quantity') is-invalid @enderror"
+                                                        value="{{ old('quantity', 1) }}" min="1" max="{{ $wine->stock }}" required>
+                                                    @error('quantity') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                                </div>
+                                                <div class="col-8 d-grid">
+                                                    <button type="submit" class="btn btn-success btn-lg">
+                                                        <i class="fas fa-cart-plus"></i> Naruči
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     @else
-                                        <button class="btn btn-secondary btn-lg" disabled>Nedostupno</button>
+                                        <button class="btn btn-secondary btn-lg" disabled>Trenutno nedostupno</button>
                                     @endif
                                 @else
                                     <a href="{{ route('login') }}" class="btn btn-outline-success btn-lg">

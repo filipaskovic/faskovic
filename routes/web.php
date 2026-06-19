@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\WineController;
 use App\Http\Controllers\Admin\WineryController;
 use App\Http\Controllers\Admin\OrderController;
-
+use App\Http\Controllers\OrderController as UserOrderController;
 // ---------- JAVNE RUTE ----------
 Route::get('/', [PublicController::class, 'home'])->name('home');
 Route::get('/vinska-karta', [PublicController::class, 'catalog'])->name('catalog');
@@ -24,6 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/moje-porudzbine', [UserOrderController::class, 'index'])->name('orders.my');
+    Route::post('/poruci/{wine}', [UserOrderController::class, 'store'])->name('orders.store');
+
 });
 
 // ---------- ADMIN RUTE ----------
