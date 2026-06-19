@@ -13,7 +13,7 @@
                 <label for="name" class="form-label">Naziv kategorije</label>
                 <input type="text" name="name" id="name"
                        class="form-control @error('name') is-invalid @enderror"
-                         maxlength="255">
+                       value="{{ old('name') }}" required maxlength="255">
                 @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

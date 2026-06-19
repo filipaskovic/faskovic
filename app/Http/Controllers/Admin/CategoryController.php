@@ -31,6 +31,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        Log::info($request);
         $request->validate(
             ['name' => 'required|string|max:255|unique:categories,name'],
             ['name.required' => 'Naziv kategorije je obavezan.',
@@ -47,7 +48,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, Category $category)
+    public function edit(Category $category)
     {
         return view('admin.categories.edit',compact('category'));
     }
@@ -57,6 +58,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        
         $data = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name'
         ],[

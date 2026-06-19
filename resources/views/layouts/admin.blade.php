@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        .sidebar { width:240px; min-height:100vh; background:#5c0a1e !important; }
+        .sidebar { width:240px; min-height:100vh; background:#5c0a1e !important; flex-shrink: 0; }
         .sidebar .nav-link { color:#e9c3cc; border-radius:.4rem; }
         .sidebar .nav-link:hover { background:rgba(255,255,255,.08); color:#fff; }
         .sidebar .nav-link.active { background:#fff; color:#5c0a1e; font-weight:600; }

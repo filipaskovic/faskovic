@@ -1,11 +1,11 @@
 @extends('layouts.admin')
-@section('title', 'Kategorije')
+@section('title', 'Vinarije')
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="h3 mb-0">Kategorije</h1>
-    <a href="{{ route('admin.categories.create') }}" class="btn btn-danger">
-        <i class="bi bi-plus-lg"></i> Nova kategorija
+    <h1 class="h3 mb-0">Vinarije</h1>
+    <a href="{{ route('admin.wineries.create') }}" class="btn btn-danger">
+        <i class="bi bi-plus-lg"></i> Nova vinarija
     </a>
 </div>
 
@@ -16,24 +16,32 @@
                 <tr>
                     <th>#</th>
                     <th>Naziv</th>
+                    <th>Region</th>
+                    <th>Zemlja</th>
                     <th>Broj vina</th>
                     <th class="text-end">Akcije</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse($categories as $i => $category)
+                @forelse($wineries as $i => $winery)
                     <tr>
                         <td>{{ $i+1 }}</td>
-                        <td>{{ $category->name }}</td>
-                        <td><span class="badge bg-secondary">{{ $category->wines_count }}</span></td>
+                        <td>{{ $winery->name }}</td>
+                        <td>{{ $winery->region }}</td>
+                        <td>{{ $winery->country }}</td>
+                        <td><span class="badge bg-secondary">{{ $winery->wines_count }}</span></td>
+
                         <td class="text-end">
-                            <a href="{{ route('admin.categories.edit', $category) }}"
+                            <a href="{{ route('admin.wineries.show',$winery) }}" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <a href="{{ route('admin.wineries.edit', $winery) }}"
                                class="btn btn-sm btn-outline-primary">
                                 <i class="bi bi-pencil"></i>
                             </a>
-                            <form action="{{ route('admin.categories.destroy', $category) }}"
+                            <form action="{{ route('admin.wineries.destroy', $winery) }}"
                                   method="POST" class="d-inline"
-                                  onsubmit="return confirm('Da li sigurno želite da obrišete ovu kategoriju?')">
+                                  onsubmit="return confirm('Da li sigurno želite da obrišete ovu vinariju?')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-outline-danger">
@@ -44,11 +52,13 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="text-center text-muted py-4">Nema kategorija.</td>
+                        <td colspan="4" class="text-center text-muted py-4">Nema vinarija.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
     </div>
 </div>
+
+
 @endsection

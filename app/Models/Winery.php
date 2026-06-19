@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Winery extends Model
 {
-    protected $fillable = ['name','region','country','description','logo'];
+    protected $fillable = ['name', 'region', 'country', 'description', 'logo', 'image'];
 
     public function wines(){
         return $this->hasMany(Wine::class);
