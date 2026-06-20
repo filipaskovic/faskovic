@@ -67,6 +67,13 @@
                 <div class="navbar align-self-center d-flex">
                    
                     @auth
+                    <a class="btn btn-sm btn-outline-success ms-2 position-relative" href="{{ route('cart.index') }}">
+                        <i class="fas fa-shopping-cart"></i>
+                        @php $cartCount = count(session('cart', [])); @endphp
+                        @if($cartCount > 0)
+                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">{{ $cartCount }}</span>
+                        @endif
+                    </a>
                     <a class="btn btn-sm btn-outline-success ms-2" href="{{ route('orders.my') }}">
                             <i class="fa fa-box"></i> Moje porudžbine
                         </a>

@@ -21,4 +21,13 @@ class Wine extends Model
         return $this->hasMany(OrderItem::class);
     }
 
+    public function getImageUrlAttribute(): ?string
+    {
+        if (! $this->image) {
+            return null;
+        }
+        return \Illuminate\Support\Str::startsWith($this->image, 'http')
+            ? $this->image
+            : asset('storage/' . $this->image);
+    }   
 }

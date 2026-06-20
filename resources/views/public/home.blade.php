@@ -84,6 +84,7 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="{{ route('wine.show', $wine) }}">
+
                             <img src="{{ $wine->image_url ?? asset('zayshop-assets/img/feature_prod_01.jpg') }}"
                                  class="card-img-top" alt="{{ $wine->name }}" style="height:260px;object-fit:cover;">
                         </a>

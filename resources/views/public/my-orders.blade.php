@@ -20,7 +20,8 @@
                 <span><strong>Porudžbina #{{ $order->id }}</strong>
                     <small class="text-muted ms-2">{{ $order->created_at->format('d.m.Y. H:i') }}</small>
                 </span>
-                <span class="badge @class([
+                <span  @class([
+                        'badge' => true,
                         'bg-warning text-dark' => $order->status === 'pending',
                         'bg-info text-dark'    => $order->status === 'confirmed',
                         'bg-success'           => $order->status === 'delivered',

@@ -63,33 +63,33 @@
                        
                         <div class="row pt-3">
                             <div class="col">
-                                @auth
-                                    @if($wine->stock > 0)
-                                        <form action="{{ route('orders.store', $wine) }}" method="POST">
-                                            @csrf
-                                            <div class="row g-2 align-items-end">
-                                                <div class="col-4">
-                                                    <label for="quantity" class="form-label">Količina</label>
-                                                    <input type="number" name="quantity" id="quantity"
-                                                        class="form-control @error('quantity') is-invalid @enderror"
-                                                        value="{{ old('quantity', 1) }}" min="1" max="{{ $wine->stock }}" required>
-                                                    @error('quantity') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                    @auth
+                                        @if($wine->stock > 0)
+                                            <form action="{{ route('cart.add', $wine) }}" method="POST">
+                                                @csrf
+                                                <div class="row g-2 align-items-end">
+                                                    <div class="col-4">
+                                                        <label for="quantity" class="form-label">Količina</label>
+                                                        <input type="number" name="quantity" id="quantity"
+                                                            class="form-control @error('quantity') is-invalid @enderror"
+                                                            value="{{ old('quantity', 1) }}" min="1" max="{{ $wine->stock }}" required>
+                                                        @error('quantity') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                                    </div>
+                                                    <div class="col-8 d-grid">
+                                                        <button type="submit" class="btn btn-success btn-lg">
+                                                            <i class="fas fa-cart-plus"></i> Dodaj u korpu
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <div class="col-8 d-grid">
-                                                    <button type="submit" class="btn btn-success btn-lg">
-                                                        <i class="fas fa-cart-plus"></i> Naruči
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        @else
+                                            <button class="btn btn-secondary btn-lg" disabled>Trenutno nedostupno</button>
+                                        @endif
                                     @else
-                                        <button class="btn btn-secondary btn-lg" disabled>Trenutno nedostupno</button>
-                                    @endif
-                                @else
-                                    <a href="{{ route('login') }}" class="btn btn-outline-success btn-lg">
-                                        Prijavi se za naručivanje
-                                    </a>
-                                @endauth
+                                        <a href="{{ route('login') }}" class="btn btn-outline-success btn-lg">
+                                            Prijavi se za kupovinu
+                                        </a>
+                                    @endauth
                             </div>
                         </div>
                     </div>
