@@ -11,14 +11,7 @@
     </div>
 </div>
 
-{{-- Google mapa (embed iframe) --}}
-<div class="w-100">
-    <iframe
-        src="https://www.google.com/maps?q=Knez%20Mihailova%201%2C%20Beograd&output=embed"
-        width="100%" height="350" style="border:0;" allowfullscreen=""
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+
 
 {{-- Kontakt podaci + forma --}}
 <div class="container py-5">
@@ -89,5 +82,12 @@
         </div>
     </div>
 </div>
-
+{{-- Google mapa (embed iframe) --}}
+<div class="w-100">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15936.407717766506!2d37.355627299999995!3d-3.0674246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1839fc5a396ea805%3A0x8e741c478eea6c01!2sMt%20Kilimanjaro!5e0!3m2!1sen!2srs!4v1782033006422!5m2!1sen!2srs"
+        width="100%" height="500" style="border:0;" allowfullscreen=""
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
 @endsection

@@ -8,17 +8,17 @@
         {{-- SIDEBAR: kategorije kao filteri --}}
         <div class="col-lg-3">
             <h1 class="h2 pb-4">Kategorije</h1>
-            <ul>
+            <ul class="list-group">
                 {{-- klasa povezana sa javascriptom koji ima preventDefault() metodu koja sprecava funkciju linka --}}
             {{-- <ul class="list-unstyled templatemo-accordion"> --}}
-                <li class="pb-2">
+                <li class="pb-2 list-group-item bg-transparent">
                     <a class="text-decoration-none {{ !request('category_id') ? 'text-success fw-bold' : 'text-dark' }}"
                        href="{{ route('catalog') }}">
                         Sva vina
                     </a>
                 </li>
                 @foreach($categories as $category)
-                    <li class="pb-2">
+                    <li class="pb-2 list-group-item bg-transparent">
                         <a class="text-decoration-none {{ request('category_id') == $category->id ? 'text-success fw-bold' : 'text-dark' }}"
                            href="{{ route('catalog', ['category_id' => $category->id]) }}">
                             {{ $category->name }}
@@ -59,9 +59,9 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="{{ route('wine.show', $wine) }}" class="h3 text-decoration-none">{{ $wine->name }}</a>
+                                <a href="{{ route('wine.show', $wine) }}" class=" cat h3 text-decoration-none">{{ $wine->name }}</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li class="text-muted">{{ $wine->category->name ?? '' }}</li>
+                                    <li  class="text-muted">{{ $wine->category->name ?? '' }}</li>
                                     <li class="text-muted">{{ $wine->winery->name ?? '' }}</li>
                                 </ul>
                                 <p class="text-center mb-0 mt-2 h5">{{ number_format($wine->price, 2) }} RSD</p>

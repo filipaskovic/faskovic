@@ -98,7 +98,10 @@ body, ul, li, p, a, label, input, div {
   visibility: visible;
   opacity: 1;
 }
-.card.product-wap a { color: #000;}
+.cat { color: #000;}
+.cat:hover{
+  color: #5c0a1e;
+}
 #carousel-related-product .slick-slide:focus { outline: none !important;}
 #carousel-related-product .slick-dots li button:before {
   font-size: 15px;
@@ -116,12 +119,12 @@ body, ul, li, p, a, label, input, div {
 }
 /* Carousel Hero */
 #template-mo-zay-hero-carousel .carousel-indicators li {
-  margin-top: -50px;
-  background-color: #59ab6e;
+
+  background-color: #5c0a1e;
 }
 #template-mo-zay-hero-carousel .carousel-control-next i,
 #template-mo-zay-hero-carousel .carousel-control-prev i {
-  color: #59ab6e !important;
+
   font-size: 2.8em !important;
 }
 /* Carousel Brand */

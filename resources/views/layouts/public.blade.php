@@ -14,7 +14,11 @@
     <link rel="stylesheet" href="{{ asset('zayshop-assets/css/custom.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="{{ asset('zayshop-assets/css/fontawesome.min.css') }}">
-
+    <script>
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+</script>
     @stack('styles')
 </head>
 
@@ -41,8 +45,9 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="{{ route('home') }}">
-                E-Vinoteka
+            <a class="navbar-brand logo align-self-center" href="{{ route('home') }}">
+                <img src="{{ asset('zayshop-assets/img/logo.svg') }}" class="site-logo" alt="E-Vinoteka" height="48"
+                    onerror="this.outerHTML='<span class=\'h1 logo\'>E-Vinoteka</span>'">
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
@@ -65,8 +70,15 @@
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                   
+                   <button id="themeToggle" class="btn  btn-outline-success ms-2" title="Promeni temu" type="button">
+                        <i class="fas fa-moon"></i>
+                    </button>
                     @auth
+                    @if(auth()->user()->isStaff())
+                        <a class="btn btn-sm  ms-2 btn-outline-success" href="{{ route('admin.dashboard') }}">
+                            <i class="fas fa-cog me-1"></i> Admin panel
+                        </a>
+                    @endif
                     <a class="btn btn-sm btn-outline-success ms-2 position-relative" href="{{ route('cart.index') }}">
                         <i class="fas fa-shopping-cart"></i>
                         @php $cartCount = count(session('cart', [])); @endphp
@@ -150,12 +162,39 @@
     </footer>
 
     <!-- Scripts -->
+    <script>
+    (function () {
+        const toggle = document.getElementById('themeToggle');
+        const icon = toggle.querySelector('i');
+        const html = document.documentElement;
+
+        // postavi ikonicu prema trenutnoj temi
+        function syncIcon() {
+            const dark = html.getAttribute('data-theme') === 'dark';
+            icon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        syncIcon();
+
+        toggle.addEventListener('click', function () {
+            const dark = html.getAttribute('data-theme') === 'dark';
+            if (dark) {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            syncIcon();
+        });
+    })();
+</script>
     <script src="{{ asset('zayshop-assets/js/jquery-1.11.0.min.js') }}"></script>
     <script src="{{ asset('zayshop-assets/js/jquery-migrate-1.2.1.min.js') }}"></script>
     <script src="{{ asset('zayshop-assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('zayshop-assets/js/templatemo.js') }}"></script>
     <script src="{{ asset('zayshop-assets/js/custom.js') }}"></script>
     @stack('scripts')
+
 </body>
 
 </html>

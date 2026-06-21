@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="{{ asset('zayshop-assets/img/banner_img_01.jpg') }}" alt="">
+                        <img class="img-fluid" src="{{ asset('zayshop-assets/img/banner_img_01.jpg') }}" style="max-height: 600px" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left align-self-center">
@@ -31,7 +31,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="{{ asset('zayshop-assets/img/banner_img_02.jpg') }}" alt="">
+                        <img class="img-fluid" src="{{ asset('zayshop-assets/img/banner_img_02.avif') }}" style="max-height: 600px" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -53,19 +53,20 @@
 </div>
 
 <!-- Kategorije -->
+
 <section class="container py-5">
-    <div class="row text-center pt-3">
-        <div class="col-lg-6 m-auto">
+    <div class="row text-center pt-3 mb-4">
+        <div class="col-lg-7 m-auto">
             <h1 class="h1">Naše kategorije</h1>
-            <p>Pronađite vino po svom ukusu — od crvenih i belih, do penušavih i desertnih.</p>
+            <p class="text-muted">Pronađite vino po svom ukusu — od crvenih i belih, do penušavih i desertnih.</p>
         </div>
     </div>
-    <div class="row">
+
+    <div class="d-flex flex-wrap justify-content-center gap-3">
         @foreach($categories as $category)
-            <div class="col-12 col-md-4 p-4 text-center">
-                <h5 class="mt-3 mb-3">{{ $category->name }}</h5>
-                <p><a href="{{ route('catalog', ['category_id' => $category->id]) }}" class="btn btn-success">Pogledaj</a></p>
-            </div>
+            <a href="{{ route('catalog', ['category_id' => $category->id]) }}" class="category-pill">
+                <i class="fas fa-wine-glass-alt me-2"></i>{{ $category->name }}
+            </a>
         @endforeach
     </div>
 </section>

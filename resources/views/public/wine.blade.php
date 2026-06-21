@@ -21,7 +21,7 @@
                     <img class="card-img img-fluid"
                          src="{{ $wine->image_url ?? asset('zayshop-assets/img/product_single_01.jpg') }}"
                          alt="{{ $wine->name }}"
-                         style="height:480px;object-fit:cover;">
+                         style="height:480px;object-fit:contain;">
                 </div>
             </div>
 
