@@ -14,7 +14,8 @@
 .btn-outline-success, .btn-success { color: var(--vino-bordo) !important; border-color: var(--vino-bordo) !important; }
 .btn-success{color: #fff !important;}
 .btn-outline-success:hover , .btn-success:hover { background-color: var(--vino-bordo) !important; color: #fff !important; }
-.badge.bg-success { background-color: var(--vino-bordo) !important; }
+.badge.bg-spec { background-color: var(--vino-bordo) !important; }
+.badge-spec {background-color: #0dcaf0 !important;}
 .navbar-brand.logo, .logo { color: var(--vino-bordo) !important; }
 
 /* ===== TOPLI DARK MODE ===== */

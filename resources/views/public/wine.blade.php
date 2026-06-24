@@ -49,7 +49,7 @@
                         {{-- Dostupnost --}}
                         <p class="py-2">
                             @if($wine->stock > 0)
-                                <span class="badge bg-success">Na stanju ({{ $wine->stock }})</span>
+                                <span class="badge bg-spec">Na stanju ({{ $wine->stock }})</span>
                             @else
                                 <span class="badge bg-danger">Trenutno nedostupno</span>
                             @endif
