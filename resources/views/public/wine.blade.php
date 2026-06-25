@@ -63,7 +63,7 @@
                        
                         <div class="row pt-3">
                             <div class="col">
-                                    @auth
+                                
                                         @if($wine->stock > 0)
                                             <form action="{{ route('cart.add', $wine) }}" method="POST">
                                                 @csrf
@@ -85,11 +85,8 @@
                                         @else
                                             <button class="btn btn-secondary btn-lg" disabled>Trenutno nedostupno</button>
                                         @endif
-                                    @else
-                                        <a href="{{ route('login') }}" class="btn btn-outline-success btn-lg">
-                                            Prijavi se za kupovinu
-                                        </a>
-                                    @endauth
+
+                                    
                             </div>
                         </div>
                     </div>

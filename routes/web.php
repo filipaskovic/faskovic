@@ -16,26 +16,27 @@ Route::get('/vinska-karta', [PublicController::class, 'catalog'])->name('catalog
 Route::get('/vino/{wine}', [PublicController::class, 'wine'])->name('wine.show');
 Route::get('/kontakt', [PublicController::class, 'contact'])->name('contact');
 Route::post('/kontakt', [PublicController::class, 'sendContact'])->name('contact.send');
+
 // ---------- BREEZE: dashboard + profil ----------
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/moje-porudzbine', [UserOrderController::class, 'index'])->name('orders.my');
+Route::post('/poruci/{wine}', [UserOrderController::class, 'store'])->name('orders.store');
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/moje-porudzbine', [UserOrderController::class, 'index'])->name('orders.my');
-    Route::post('/poruci/{wine}', [UserOrderController::class, 'store'])->name('orders.store');
 
+    Route::post('/korpa/poruci', [CartController::class, 'checkout'])->name('cart.checkout');
+    });
     Route::get('/korpa', [CartController::class, 'index'])->name('cart.index');
     Route::post('/korpa/dodaj/{wine}', [CartController::class, 'add'])->name('cart.add');
     Route::patch('/korpa/izmeni/{wine}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/korpa/izbaci/{wine}', [CartController::class, 'remove'])->name('cart.remove');
     Route::post('/korpa/isprazni', [CartController::class, 'clear'])->name('cart.clear');
-    Route::post('/korpa/poruci', [CartController::class, 'checkout'])->name('cart.checkout');
-
-});
+    
 
 // ---------- ADMIN RUTE ----------
 Route::prefix('admin')

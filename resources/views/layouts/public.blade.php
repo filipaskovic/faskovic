@@ -79,6 +79,21 @@
                             <i class="fas fa-cog me-1"></i> Admin panel
                         </a>
                     @endif
+                    <a class="btn btn-sm btn-outline-success ms-2" href="{{ route('orders.my') }}">
+                        <i class="fa fa-box"></i> Moje porudžbine
+                    </a>
+                    
+                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                        @csrf
+                        <button class="btn  btn-outline-success mx-2">Odjava</button>
+                    </form>
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ route('profile.edit') }}">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                    </a>
+                    @else
+                    <a class="btn btn-sm btn-outline-success ms-2" href="{{ route('login') }}">Prijava</a>
+                    <a class="btn btn-sm btn-success ms-2" href="{{ route('register') }}">Registracija</a>
+                    @endauth
                     <a class="btn btn-sm btn-outline-success ms-2 position-relative" href="{{ route('cart.index') }}">
                         <i class="fas fa-shopping-cart"></i>
                         @php $cartCount = count(session('cart', [])); @endphp
@@ -86,21 +101,6 @@
                             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">{{ $cartCount }}</span>
                         @endif
                     </a>
-                    <a class="btn btn-sm btn-outline-success ms-2" href="{{ route('orders.my') }}">
-                            <i class="fa fa-box"></i> Moje porudžbine
-                        </a>
-                        
-                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                            @csrf
-                            <button class="btn  btn-outline-success mx-2">Odjava</button>
-                        </form>
-                        <a class="nav-icon position-relative text-decoration-none" href="{{ route('profile.edit') }}">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        </a>
-                    @else
-                        <a class="btn btn-sm btn-outline-success ms-2" href="{{ route('login') }}">Prijava</a>
-                        <a class="btn btn-sm btn-success ms-2" href="{{ route('register') }}">Registracija</a>
-                    @endauth
                 </div>
             </div>
 

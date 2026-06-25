@@ -71,12 +71,19 @@
                 <button class="btn btn-outline-danger">Isprazni korpu</button>
             </form>
 
-            <form action="{{ route('cart.checkout') }}" method="POST">
-                @csrf
-                <button class="btn btn-success btn-lg">
-                    <i class="fas fa-check"></i> Poruči
-                </button>
-            </form>
+            @auth
+                <form action="{{ route('cart.checkout') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-success btn-lg">
+                        <i class="fas fa-check"></i> Poruči
+                    </button>
+                </form>
+                
+            @else
+                <a href="{{ route('login') }}" class="btn btn-success btn-lg">
+                    <i class="fas fa-sign-in-alt"></i> Prijavi se za poručivanje
+                </a>
+            @endauth
         </div>
     @endif
 </div>

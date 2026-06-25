@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    // Spisak korisnikovih porudžbina
+
     public function index()
     {
         $orders = Order::with('items.wine')
@@ -20,7 +20,7 @@ class OrderController extends Controller
         return view('public.my-orders', compact('orders'));
     }
 
-    // Kreiranje porudžbine za jedno vino
+
     public function store(Request $request, Wine $wine)
     {
         $data = $request->validate([
@@ -38,14 +38,14 @@ class OrderController extends Controller
         $quantity = (int) $data['quantity'];
         $total = $wine->price * $quantity;
 
-        // Napravi porudžbinu
+
         $order = Order::create([
             'user_id' => auth()->id(),
             'status'  => 'pending',
             'total'   => $total,
         ]);
 
-        // Napravi stavku
+
         OrderItem::create([
             'order_id' => $order->id,
             'wine_id'  => $wine->id,
@@ -53,7 +53,7 @@ class OrderController extends Controller
             'price'    => $wine->price,
         ]);
 
-        // Smanji zalihe
+
         $wine->decrement('stock', $quantity);
 
         return redirect()->route('orders.my')

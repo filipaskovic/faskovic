@@ -83,9 +83,14 @@ class CartController extends Controller
         return back()->with('success', 'Korpa je ispražnjena.');
     }
 
-    // Poruči — pretvori korpu u porudžbinu
+
     public function checkout()
     {
+            if (! auth()->check()) {
+        session(['url.intended' => route('cart.index')]);
+        return redirect()->route('login')
+            ->with('error', 'Prijavite se da biste završili porudžbinu.');
+            }
         $cart = session('cart', []);
 
         if (empty($cart)) {

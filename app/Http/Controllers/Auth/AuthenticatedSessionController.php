@@ -27,12 +27,11 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        // Admin i editor → admin panel; ostali → korisnički deo
         if ($request->user()->isStaff()) {
             return redirect()->route('admin.dashboard');
         }
 
-        return redirect()->intended(route('home'));
+        return redirect()->intended(route('dashboard', absolute: false));
     }
     /**
      * Destroy an authenticated session.
